@@ -4,7 +4,8 @@
 
 class MyClass {
 public:
-    void displayMessage();
+    void displayMessage(){std::cout("Printing");};
+    
 };
 
 #endif
