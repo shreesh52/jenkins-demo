@@ -1,13 +1,13 @@
-CC=g++
-CFLAGS=-Iinclude
+CC = g++
+CFLAGS = -Iinclude
 
-SRC_DIR=src
-BUILD_DIR=build
-BIN_DIR=bin
+SRC_DIR = src
+BUILD_DIR = build
+BIN_DIR = bin
 
-TARGET=$(BIN_DIR)/myapp
-SRC_FILES=$(wildcard $(WORKSPACE)/$(SRC_DIR)/*.cpp)
-OBJ_FILES=$(patsubst $(WORKSPACE)/$(SRC_DIR)/%.cpp,$(WORKSPACE)/$(BUILD_DIR)/%.o,$(SRC_FILES))
+TARGET = $(BIN_DIR)/myapp
+SRC_FILES = $(wildcard $(WORKSPACE)/$(SRC_DIR)/*.cpp)
+OBJ_FILES = $(patsubst $(WORKSPACE)/$(SRC_DIR)/%.cpp,$(WORKSPACE)/$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 $(TARGET): $(OBJ_FILES)
     @mkdir -p $(WORKSPACE)/$(BIN_DIR)
