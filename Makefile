@@ -10,13 +10,13 @@ SRC_FILES = $(wildcard $(WORKSPACE)/$(SRC_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(WORKSPACE)/$(SRC_DIR)/%.cpp,$(WORKSPACE)/$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 $(TARGET): $(OBJ_FILES)
-    @mkdir -p $(WORKSPACE)/$(BIN_DIR)
-    $(CC) -o $@ $^
+	@mkdir -p $(WORKSPACE)/$(BIN_DIR)
+	$(CC) -o $@ $^
 
 $(WORKSPACE)/$(BUILD_DIR)/%.o: $(WORKSPACE)/$(SRC_DIR)/%.cpp
-    @mkdir -p $(WORKSPACE)/$(BUILD_DIR)
-    $(CC) $(CFLAGS) -c -o $@ $<
+	@mkdir -p $(WORKSPACE)/$(BUILD_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-    rm -rf $(WORKSPACE)/$(BUILD_DIR) $(WORKSPACE)/$(BIN_DIR)
+	rm -rf $(WORKSPACE)/$(BUILD_DIR) $(WORKSPACE)/$(BIN_DIR)
 
