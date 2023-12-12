@@ -6,17 +6,17 @@ BUILD_DIR=build
 BIN_DIR=bin
 
 TARGET=$(BIN_DIR)/myapp
-SRC_FILES=$(wildcard $(SRC_DIR)/*.cpp)
-OBJ_FILES=$(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC_FILES))
+SRC_FILES=$(wildcard $(WORKSPACE)/$(SRC_DIR)/*.cpp)
+OBJ_FILES=$(patsubst $(WORKSPACE)/$(SRC_DIR)/%.cpp,$(WORKSPACE)/$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 $(TARGET): $(OBJ_FILES)
-	@mkdir -p $(BIN_DIR)
-	$(CC) -o $@ $^
+    @mkdir -p $(WORKSPACE)/$(BIN_DIR)
+    $(CC) -o $@ $^
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(WORKSPACE)/$(BUILD_DIR)/%.o: $(WORKSPACE)/$(SRC_DIR)/%.cpp
+    @mkdir -p $(WORKSPACE)/$(BUILD_DIR)
+    $(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+    rm -rf $(WORKSPACE)/$(BUILD_DIR) $(WORKSPACE)/$(BIN_DIR)
 
